@@ -12,9 +12,8 @@ export class EmployeeDetailsComponent implements OnChanges {
   @Output() employeeSaved = new EventEmitter<Employee>();
   @Output() employeeDeleted = new EventEmitter<number>();
 
-  jobPositions = this.dataService.jobPositions; // Array of job positions
-  states = this.dataService.allStates; // Array of states
-
+  jobPositions = this.dataService.jobPositions; 
+  states = this.dataService.allStates; 
   constructor(private dataService: DataService) {}
 
   ngOnChanges() {
@@ -24,10 +23,10 @@ export class EmployeeDetailsComponent implements OnChanges {
   }
 
   saveEmployee() {
-    this.employeeSaved.emit(this.employee); // Emit the updated employee object
+    this.employeeSaved.emit(this.employee); 
   }
 
   deleteEmployee() {
-    this.employeeDeleted.emit(this.employee.employeeId); // Emit the employee ID for deletion
+    this.employeeDeleted.emit(this.employee.employeeId); 
   }
 }
