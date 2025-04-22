@@ -11,10 +11,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
-import {MatListModule} from '@angular/material/list'
+import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { EmployeesListComponent } from './features/employees-list/employees-list.component';
 import { EmployeeDetailsComponent } from './features/employee-details/employee-details.component';
-
+import { ConfirmDialogComponent } from './features/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { EmployeeDetailsComponent } from './features/employee-details/employee-d
     EmployeesComponent,
     HomeComponent,
     EmployeesListComponent,
-    EmployeeDetailsComponent
+    EmployeeDetailsComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,9 @@ import { EmployeeDetailsComponent } from './features/employee-details/employee-d
     MatInputModule,
     MatSelectModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

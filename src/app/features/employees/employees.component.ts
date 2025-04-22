@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Employee } from '../../models/employee.model';
 import { EmployeeService } from '../../services/employee.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+
 
 @Component({
   selector: 'app-employees',
@@ -12,7 +15,7 @@ export class EmployeesComponent {
   selectedEmployee!: Employee;
   hasSelectedEmployee: boolean = false;
 
-  constructor(private employeeService: EmployeeService) {
+  constructor(private employeeService: EmployeeService,private dialog: MatDialog) {
     this.loadEmployees();
   }
 
@@ -32,15 +35,44 @@ export class EmployeesComponent {
     } else {
       // Add new employee if it doesn't exist
       this.employeeService.addEmployee(employee);
+
       this.loadEmployees(); // Refresh the list
     }
+
+    
+      this.dialog.open(ConfirmDialogComponent, {
+        width: '400px',
+        data: {
+          title: 'Success',
+          message: 'The employee record has been saved successfully.',
+          actionButton: 'OK',
+          showCancel: false, // No cancel button for "Save Successful"
+        },
+      });
   }
 
   onEmployeeDeleted(employeeId: number): void {
-    this.employeeService.deleteEmployee(employeeId);
-    this.loadEmployees(); 
-    this.selectedEmployee = {} as Employee; 
-    this.hasSelectedEmployee = false;
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '400px',
+      data: {
+        title: 'Confirm Delete',
+        message: 'Are you sure you want to delete this employee record?',
+        actionButton: 'Delete',
+        showCancel: true,
+      },
+    });
+
+   
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.employeeService.deleteEmployee(employeeId);
+        this.loadEmployees(); 
+        this.selectedEmployee = {} as Employee; 
+        this.hasSelectedEmployee = false;
+      } 
+    });
+    
   }
 
   // Select an employee for editing
