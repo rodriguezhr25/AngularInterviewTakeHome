@@ -1,1 +1,12 @@
-<p>employee information here!</p>
+<div class="app-container">
+  <app-employees-list 
+  (employeeSelected)="onEmployeeSelected($event)" 
+  (newEmployee)="onNewEmployee()" 
+  [employees]="employees">
+</app-employees-list>
+  <app-employee-details *ngIf=" hasSelectedEmployee"
+    [employee]="selectedEmployee" 
+    (employeeSaved)="onEmployeeSaved($event)"
+    (employeeDeleted)="onEmployeeDeleted($event)">
+  </app-employee-details>
+</div>

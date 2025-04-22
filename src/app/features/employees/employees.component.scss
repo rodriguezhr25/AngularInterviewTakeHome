@@ -1,0 +1,16 @@
+.app-container {
+    display: flex;
+    gap: 100px;
+    padding: 30px 100px 30px 100px;
+  }
+  
+  app-employee-list {
+    flex: 1;
+  }
+  
+  app-employee-details {
+    flex: 2;
+  }
+
+
+  

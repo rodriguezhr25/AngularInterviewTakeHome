@@ -1,0 +1,111 @@
+.employees-list-container {
+  background: transparent;
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  color: #ffffff;
+  width: 100%;
+}
+
+
+.employees-list-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.employees-list-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 20px;
+  align-content: center;
+  align-items: center;
+}
+
+
+.add-new-btn {
+  background-color: #ffffff;
+  color: #32b3d6;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+}
+
+.add-new-btn:hover {
+  background-color: #32b3d6;
+  color: #ffffff;
+}
+
+
+.employee-list {
+  list-style: none;
+  padding: 20px 0 0 0;
+  margin: 25px 0 0 0;
+}
+
+.employee-list-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  position: relative;
+}
+
+.employee-list-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.employee-list-item:last-child {
+  border-bottom: none;
+}
+
+.employee-picture {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1rem;
+}
+
+.employee-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.employee-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.employee-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.employee-job-title {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #e0e0e0;
+}
+
+
+.arrow-right {
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+}
+
+.arrow-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

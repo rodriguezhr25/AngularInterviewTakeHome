@@ -1,0 +1,79 @@
+<mat-card *ngIf="employee" class="employee-details-container">
+  <mat-card-content>
+    <!-- First Row: First Name and Last Name -->
+    <div class="form-row">
+      <mat-form-field class="form-field" appearance="fill" >
+        <mat-label>First Name</mat-label>
+        <input matInput [(ngModel)]="employee.firstName" name="firstName">
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput [(ngModel)]="employee.lastName" name="lastName">
+      </mat-form-field>
+    </div>
+
+    <!-- Second Row: Email and Phone Number -->
+    <div class="form-row">
+      <mat-form-field class="form-field" appearance="fill" >
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="employee.email" name="email">
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="fill" >
+        <mat-label>Phone Number</mat-label>
+        <input matInput [(ngModel)]="employee.phoneNumber" name="phoneNumber">
+      </mat-form-field>
+    </div>
+
+    <!-- Third Row: Position -->
+    <div class="form-row ">
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Position</mat-label>
+        <mat-select [(ngModel)]="employee.positionId" name="positionId">
+          <mat-option *ngFor="let position of jobPositions" [value]="position.id.toString()">
+            {{ position.title }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Fourth Row: Job Requirements (Textarea) -->
+    <div class="form-row">
+      <mat-form-field class="form-field full-width" appearance="fill">
+        <mat-label>Job Requirements</mat-label>
+        <textarea matInput [(ngModel)]="employee.jobRequirements" rows="3"></textarea>
+      </mat-form-field>
+    </div>
+
+    <!-- Fifth Row: Address -->
+    <div class="form-row">
+      <mat-form-field class="form-field full-width" appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput [(ngModel)]="employee.address1" name="address">
+      </mat-form-field>
+    </div>
+
+    <!-- Sixth Row: City, State, ZIP -->
+    <div class="form-row">
+      <mat-form-field class="form-field" appearance="fill" style="flex: 2;">
+        <mat-label>City</mat-label>
+        <input matInput [(ngModel)]="employee.city" name="city">
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="fill" style="flex: 1;">
+        <mat-label>State</mat-label>
+        <mat-select [(ngModel)]="employee.state" name="state">
+          <mat-option *ngFor="let state of states" [value]="state.abbreviation">
+            {{ state.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>ZIP</mat-label>
+        <input matInput [(ngModel)]="employee.zip" name="zip">
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button class="delete-btn" (click)="deleteEmployee()">Remove Employee</button>
+    <button class="save-btn" (click)="saveEmployee()">Save</button>
+  </mat-card-actions>
+</mat-card>

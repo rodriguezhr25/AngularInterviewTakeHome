@@ -1,0 +1,20 @@
+<div class="employees-list-container">
+  <div class="employees-list-header">    
+    <div class="employees-list-title">Employees</div>
+    <button class="add-new-btn" (click)="addNewEmployee()">Add New</button>
+  </div>
+  <ul class="employee-list">
+    <li class="employee-list-item" *ngFor="let employee of employees" (click)="selectEmployee(employee)">
+      <div class="employee-picture">
+        <img src="../../../assets/images/default-image.png" alt="Employee Picture" />
+      </div>
+      <div class="employee-details">
+        <div class="employee-name">{{ employee.firstName }} {{ employee.lastName }}</div>
+        <div class="employee-job-title">{{ getJobTitle(employee.positionId) }}</div>
+      </div>
+      <div class="arrow-right">
+        <img src="../../../assets/images/arrow-right.png" alt="Arrow" />
+      </div>
+    </li>
+  </ul>
+</div>

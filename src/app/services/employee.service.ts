@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Employee } from '../models/employee.model';
 
 @Injectable({
   providedIn: 'root'
@@ -60,5 +61,37 @@ export class EmployeeService {
   ]
 
   constructor() { }
+
+   // Get all employees
+   getEmployees(): Employee[] {
+    return [...this.employees]; // Return a copy to avoid mutation
+  }
+ 
+  // Add a new employee
+  addEmployee(employee: Employee): void {
+    const newEmployee = { ...employee, employeeId: this.getNextEmployeeId(), positionId: employee.positionId.toString()};
+    this.employees.push(newEmployee);
+  }
+
+  // Update an existing employee
+  updateEmployee(employee: Employee): void {
+    const index = this.employees.findIndex((e) => e.employeeId === employee.employeeId);
+    if (index !== -1) {
+      this.employees[index] = employee;
+    }
+  }
+
+  // Delete an employee by ID
+  deleteEmployee(employeeId: number): void {
+    this.employees = this.employees.filter(emp => emp.employeeId !== employeeId);
+    console.log('Updated Employees:', this.employees); // Debugging log
+  }
+
+  
+  private getNextEmployeeId(): number {
+    return this.employees.length > 0
+      ? Math.max(...this.employees.map(emp => emp.employeeId)) + 1
+      : 1;
+  }
 
 }
